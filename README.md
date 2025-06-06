@@ -4,7 +4,7 @@ A powerful RAG (Retrieval-Augmented Generation) chatbot for product documentatio
 
 ## 🚀 Live Demo
 
-🌐 **[Try the Bot on Hugging Face Spaces](https://huggingface.co/spaces/your-username/product-qa-bot)**
+🌐 **[Try the Bot on Hugging Face Spaces](https://huggingface.co/spaces/rainwagon14/product-qa-bot)**
 
 ## ✨ Features
 
@@ -25,7 +25,7 @@ User Question → Retrieval → Context + Question → Qwen → Response
 
 ## 🛠️ Tech Stack
 
-- **LLM**: Qwen 2.5 72B Instruct (via OpenRouter)
+- **LLM**: Qwen 3-30b-a3b (via OpenRouter)
 - **Embeddings**: HuggingFace sentence-transformers/all-MiniLM-L6-v2
 - **Vector Database**: Qdrant Cloud
 - **Framework**: LangChain + Streamlit
