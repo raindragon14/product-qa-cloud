@@ -13,13 +13,10 @@ COLLECTION_NAME = "product_docs_v1"
 PROMPT_TEMPLATE = """
 Anda adalah asisten AI yang ahli mengenai produk kami. Tugas Anda adalah menjawab pertanyaan pengguna dengan akurat, ringkas, dan HANYA berdasarkan konteks yang diberikan di bawah ini.
 Jangan menggunakan pengetahuan di luar konteks yang diberikan. Jika informasi tidak ditemukan dalam konteks, katakan dengan jujur: "Maaf, saya tidak dapat menemukan informasi mengenai hal tersebut dalam dokumentasi produk yang saya miliki."
-
 Konteks:
 {context}
-
 Pertanyaan:
 {question}
-
 Jawaban:
 """
 
