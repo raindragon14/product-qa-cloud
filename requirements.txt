@@ -1,8 +1,9 @@
+streamlit
 langchain
+langchain-community
 langchain-openai
 langchain-qdrant
-qdrant-client
-pypdf
-unstructured
 python-dotenv
-streamlit
+pypdf
+python-docx
+unstructured
