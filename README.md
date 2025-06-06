@@ -10,7 +10,7 @@ A powerful RAG (Retrieval-Augmented Generation) chatbot for product documentatio
 
 - 📚 **Document Ingestion**: Supports PDF, DOCX, DOC, and TXT files
 - 🧠 **Smart Retrieval**: Uses HuggingFace embeddings for semantic search
-- 💬 **Intelligent Responses**: Powered by Qwen 2.5 72B via OpenRouter
+- 💬 **Intelligent Responses**: Powered by Qwen 3 30B via OpenRouter
 - ☁️ **Cloud Storage**: Vector embeddings stored in Qdrant Cloud
 - 🎨 **Modern UI**: Beautiful Streamlit interface
 - 🔒 **Secure**: API keys managed through environment variables
@@ -25,7 +25,7 @@ User Question → Retrieval → Context + Question → Qwen → Response
 
 ## 🛠️ Tech Stack
 
-- **LLM**: Qwen 3-30b-a3b (via OpenRouter)
+- **LLM**: Qwen 3-30B-a3b (via OpenRouter)
 - **Embeddings**: HuggingFace sentence-transformers/all-MiniLM-L6-v2
 - **Vector Database**: Qdrant Cloud
 - **Framework**: LangChain + Streamlit
