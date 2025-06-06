@@ -1,0 +1,8 @@
+langchain
+langchain-openai
+langchain-qdrant
+qdrant-client
+pypdf
+unstructured
+python-dotenv
+streamlit
