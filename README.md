@@ -4,7 +4,7 @@ A powerful RAG (Retrieval-Augmented Generation) chatbot for product documentatio
 
 ## 🚀 Live Demo
 
-🌐 **[Try the Bot on Hugging Face Spaces](https://huggingface.co/spaces/rainwagon14/product-qa-bot)**
+🌐 **[Try the Bot on Hugging Face Spaces](https://huggingface.co/spaces/rainwagon14/ragexample)**
 
 ## ✨ Features
 
@@ -89,7 +89,7 @@ python ingest_data.py
 Start the Streamlit app:
 
 ```bash
-streamlit run app_streamlit.py
+streamlit run app.py
 ```
 
 ## 🌐 Deployment on Hugging Face Spaces
