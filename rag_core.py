@@ -31,11 +31,11 @@ def get_rag_chain(qdrant_url: str, qdrant_api_key: str, openrouter_api_key: str)
     
     # 1. Inisialisasi model LLM dengan OpenRouter (Qwen) dan Embedding dengan HuggingFace
     llm = ChatOpenAI(
-        model_name="qwen/qwen3-30b-a3b",  # Qwen model dari OpenRouter
+        model="qwen/qwen3-30b-a3b",  # Qwen model dari OpenRouter
         temperature=0.5,
         openai_api_key=openrouter_api_key,
         openai_api_base="https://openrouter.ai/api/v1",
-        headers={
+        default_headers={
             "HTTP-Referer": "http://localhost:8501",  # Your Streamlit app URL
             "X-Title": "Product QA Bot"  # Your app name
         }
