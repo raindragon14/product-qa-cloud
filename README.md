@@ -141,7 +141,7 @@ product-qa-cloud/
 ### LLM Settings
 
 - **Model**: qwen/qwen3-30b-a3b
-- **Temperature**: 0.1
+- **Temperature**: 0.5
 - **Max Tokens**: Default
 
 ### Vector Search
@@ -168,10 +168,6 @@ product-qa-cloud/
 3. Commit your changes (`git commit -m 'Add amazing feature'`)
 4. Push to the branch (`git push origin feature/amazing-feature`)
 5. Open a Pull Request
-
-## 📝 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ## 🙏 Acknowledgments
 
