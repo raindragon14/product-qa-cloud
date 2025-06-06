@@ -3,7 +3,10 @@ langchain
 langchain-community
 langchain-openai
 langchain-qdrant
+langchain-huggingface
 python-dotenv
 pypdf
 python-docx
 unstructured
+sentence-transformers
+torch

@@ -7,7 +7,7 @@ from langchain_community.document_loaders import (
     TextLoader,
 )
 from langchain.text_splitter import RecursiveCharacterTextSplitter
-from langchain_openai import OpenAIEmbeddings
+from langchain_huggingface import HuggingFaceEmbeddings
 from langchain_qdrant import Qdrant
 
 # --- KONFIGURASI ---
@@ -48,11 +48,13 @@ def main():
     
     qdrant_url = os.getenv("QDRANT_URL")
     qdrant_api_key = os.getenv("QDRANT_API_KEY")
-    openai_api_key = os.getenv("OPENAI_API_KEY")
+    openrouter_api_key = os.getenv("OPENROUTER_API_KEY")  # Changed for clarity
 
-    if not all([qdrant_url, qdrant_api_key, openai_api_key]):
-        print("Error: Pastikan QDRANT_URL, QDRANT_API_KEY, dan OPENAI_API_KEY sudah diatur di file .env")
+    if not all([qdrant_url, qdrant_api_key]):
+        print("Error: Pastikan QDRANT_URL dan QDRANT_API_KEY sudah diatur di file .env")
         return
+    
+    print("Note: Menggunakan HuggingFace embeddings (gratis) untuk kompatibilitas optimal.")
 
     # 2. Muat dokumen dari folder 'data/'
     documents = load_documents(DATA_PATH)
@@ -66,8 +68,13 @@ def main():
     chunks = text_splitter.split_documents(documents)
     print(f"Total chunks yang dihasilkan: {len(chunks)}")
 
-    # 4. Inisialisasi model embedding
-    embeddings = OpenAIEmbeddings(openai_api_key=openai_api_key)
+    # 4. Inisialisasi model embedding dengan HuggingFace (gratis dan reliable)
+    print("Menginisialisasi HuggingFace embeddings...")
+    embeddings = HuggingFaceEmbeddings(
+        model_name="sentence-transformers/all-MiniLM-L6-v2",
+        model_kwargs={'device': 'cpu'},
+        encode_kwargs={'normalize_embeddings': True}
+    )
 
     # 5. Unggah chunks dan embeddings ke Qdrant Cloud
     print(f"\nMengunggah data ke Qdrant Cloud collection: '{COLLECTION_NAME}'...")

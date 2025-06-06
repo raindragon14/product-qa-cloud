@@ -1,5 +1,6 @@
 import qdrant_client
-from langchain_openai import ChatOpenAI, OpenAIEmbeddings
+from langchain_openai import ChatOpenAI
+from langchain_huggingface import HuggingFaceEmbeddings
 from langchain_qdrant import Qdrant
 from langchain.prompts import PromptTemplate
 from langchain.schema.runnable import RunnablePassthrough
@@ -22,15 +23,30 @@ Pertanyaan:
 Jawaban:
 """
 
-def get_rag_chain(qdrant_url: str, qdrant_api_key: str, openai_api_key: str):
+def get_rag_chain(qdrant_url: str, qdrant_api_key: str, openrouter_api_key: str):
     """
     Membuat dan mengembalikan RAG chain yang siap digunakan.
     Fungsi ini menerima kredensial sebagai argumen agar portabel.
     """
     
-    # 1. Inisialisasi model LLM dan Embedding
-    llm = ChatOpenAI(model_name="gpt-3.5-turbo", temperature=0.1, openai_api_key=openai_api_key)
-    embeddings = OpenAIEmbeddings(openai_api_key=openai_api_key)
+    # 1. Inisialisasi model LLM dengan OpenRouter (Qwen) dan Embedding dengan HuggingFace
+    llm = ChatOpenAI(
+        model_name="qwen/qwen3-30b-a3b",  # Qwen model dari OpenRouter
+        temperature=0.5,
+        openai_api_key=openrouter_api_key,
+        openai_api_base="https://openrouter.ai/api/v1",
+        headers={
+            "HTTP-Referer": "http://localhost:8501",  # Your Streamlit app URL
+            "X-Title": "Product QA Bot"  # Your app name
+        }
+    )
+    
+    # Menggunakan HuggingFace embeddings untuk konsistensi dengan ingesti data
+    embeddings = HuggingFaceEmbeddings(
+        model_name="sentence-transformers/all-MiniLM-L6-v2",
+        model_kwargs={'device': 'cpu'},
+        encode_kwargs={'normalize_embeddings': True}
+    )
 
     # 2. Inisialisasi klien Qdrant dan hubungkan ke koleksi yang sudah ada
     client = qdrant_client.QdrantClient(url=qdrant_url, api_key=qdrant_api_key)

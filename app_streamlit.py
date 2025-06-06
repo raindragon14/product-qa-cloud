@@ -4,14 +4,14 @@ from rag_core import get_rag_chain
 # --- Pengaturan Halaman ---
 st.set_page_config(page_title="Product QA Bot", page_icon="🤖", layout="wide")
 st.title("🤖 Product QA Bot")
-st.caption("Didukung oleh RAG, Qdrant, dan OpenAI")
+st.caption("Didukung oleh RAG, Qdrant, dan Qwen via OpenRouter")
 
 # --- Memuat Kredensial & Inisialisasi Chain ---
 # Menggunakan 'st.secrets' yang terintegrasi dengan Hugging Face Spaces
 try:
     QDRANT_URL = st.secrets["QDRANT_URL"]
     QDRANT_API_KEY = st.secrets["QDRANT_API_KEY"]
-    OPENAI_API_KEY = st.secrets["OPENAI_API_KEY"]
+    OPENROUTER_API_KEY = st.secrets["OPENROUTER_API_KEY"]
 except KeyError:
     st.error("Secrets (kunci API) tidak ditemukan. Harap atur di Hugging Face Spaces.")
     st.stop()
@@ -23,7 +23,7 @@ def load_chain():
     return get_rag_chain(
         qdrant_url=QDRANT_URL,
         qdrant_api_key=QDRANT_API_KEY,
-        openai_api_key=OPENAI_API_KEY
+        openrouter_api_key=OPENROUTER_API_KEY
     )
 
 try:
